@@ -2,14 +2,30 @@
 
 function find_substr($str, $substr) {
 
-    $str = explode(' ', $str);
+    $str = str_split($str);
 
-    for ($i = 0; $i < count($str); $i++) {
-        if ($str[$i] == $substr) {
-            return 'Подстрока имеется' . "\n";
+    $substr = str_split($substr);
+
+    //print_r($str);
+//
+//    print_r($substr)
+
+    $j = 0;
+
+    for ($i = 0; $i <= count($str); $i++) {
+        if ($j > count($substr) - 1) {
+            echo 'Входит';
+            $j = 0;
+        }
+
+        if ($i < count($str)) {
+            if ($str[$i] == $substr[$j]) {
+                $j++;
+            } else {
+                $j = 0;
+            }
         }
     }
-    return 'Подстроки нет' . "\n";
 }
 
-echo find_substr('Hello world', 'Hello');
+echo find_substr(' Hello World!', '!');
